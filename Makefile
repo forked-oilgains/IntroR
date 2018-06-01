@@ -14,13 +14,17 @@ docs/index.Rmd : README.md
 docs/data.Rmd : data/README.md
 	cat docs/data.txt $< > $@
 
+# To make this work in Windows:
+# change from R --slave to Rscript --vanilla to use library(knitr)
 docs/%.Rmd : %.R docs/knitopts.R
 	cat docs/knitopts.R $< | sed "s_^\# _\#\' _" > docs/$<
-	R --slave -e "knitr::spin('docs/$<', knit = FALSE)"
+	Rscript --vanilla -e "library(knitr);spin(\"docs/$<\", knit = FALSE)"
 	$(RM) docs/$<
 
+# To make this work in Windows:
+# change from R --slave to Rscript --vanilla to use library(rmarkdown)
 %.html : %.Rmd docs/footer.html docs/_site.yml docs/styles.css
-	R --slave -e "rmarkdown::render_site('$<')"
+	Rscript --vanilla -e "library(rmarkdown);render_site(\"$<\")"
 
 .PHONY : clean
 clean :
