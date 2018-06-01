@@ -23,8 +23,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -33,10 +33,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -366,19 +368,16 @@ div.tocify {
 <h2>Part I: Working Directories</h2>
 <p>A working directory is the folder on your computer where you are currently working. You can find out your current working directory by typing <code>getwd()</code></p>
 <pre class="r"><code>&gt; getwd()</code></pre>
-<pre><code>[1] &quot;/Users/zhian/Documents/Everhart/IntroR&quot;</code></pre>
+<pre><code>[1] &quot;R:/github-oilgains/_FORKED/IntroR&quot;</code></pre>
 <p>If you’ve downloaded and un-zipped this directory to your desktop, you might see something like <code>/Users/&lt;yourname&gt;/Desktop/IntroR</code>. This is the default place where R will begin reading and writing files. For example, you can use the function <code>list.files()</code> to view the files in your current working directory. These are the same files that we downloaded earlier. If you’re using Rstudio, you can compare the file list with the “Files” tab in the bottom right panel.</p>
 <p>In order to use <code>list.files()</code>, we should provide it with a file path. We can provide it a “.”, which means “here” to most computer programs.</p>
 <pre class="r"><code>&gt; list.files(&quot;.&quot;)</code></pre>
-<pre><code> [1] &quot;analysis.R&quot;            &quot;data&quot;                 
- [3] &quot;docs&quot;                  &quot;IntroR.Rproj&quot;         
- [5] &quot;LICENSE&quot;               &quot;Makefile&quot;             
- [7] &quot;Part1-Introduction.R&quot;  &quot;Part2-Analysis.R&quot;     
- [9] &quot;Part3-Visualization.R&quot; &quot;parts.gif&quot;            
-[11] &quot;README.md&quot;            </code></pre>
+<pre><code>[1] &quot;data&quot;                  &quot;docs&quot;                  &quot;IntroR.Rproj&quot;         
+[4] &quot;LICENSE&quot;               &quot;Makefile&quot;              &quot;Part1-Introduction.R&quot; 
+[7] &quot;Part2-Analysis.R&quot;      &quot;Part3-Visualization.R&quot; &quot;README.md&quot;            </code></pre>
 <p>You can see that the first entry in here is “data”. This is where we’ve placed the fungicide example data.</p>
 <pre class="r"><code>&gt; list.files(&quot;data&quot;)</code></pre>
-<pre><code>[1] &quot;FungicideExample.csv&quot; &quot;README.md&quot;           </code></pre>
+<pre><code>[1] &quot;FungicideExample.csv&quot; &quot;FungicideTidy.csv&quot;    &quot;README.md&quot;           </code></pre>
 </div>
 <div id="part-ii-reading-in-data" class="section level2">
 <h2>Part II: Reading in Data</h2>

@@ -23,8 +23,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -33,10 +33,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -386,18 +388,18 @@ div.tocify {
 <h3>Workshop Materials</h3>
 <p>Our <a href="https://github.com/everhartlab/IntroR/archive/master.zip">workshop materials</a> is a zip file that contains a folder called <code>IntroR-master/</code> with the folowing structure:</p>
 <pre><code>.
-├── IntroR.Rproj
-├── LICENSE
-├── Makefile
-├── Part1-Introduction.R
-├── Part2-Analysis.R
-├── Part3-Visualization.R
-├── README.md
-├── data/
-│   ├── FungicideExample.csv
-│   └── README.md
-└── docs/
-    └── ...</code></pre>
+â”œâ”€â”€ IntroR.Rproj
+â”œâ”€â”€ LICENSE
+â”œâ”€â”€ Makefile
+â”œâ”€â”€ Part1-Introduction.R
+â”œâ”€â”€ Part2-Analysis.R
+â”œâ”€â”€ Part3-Visualization.R
+â”œâ”€â”€ README.md
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ FungicideExample.csv
+â”‚   â””â”€â”€ README.md
+â””â”€â”€ docs/
+    â””â”€â”€ ...</code></pre>
 <p>We are providing the R scripts for the workshop. We will be live-coding these scripts, and <strong>we encourage you to follow along by creating your own R scripts</strong> so that you can get comfortable typing these commands. For those who feel the pace is too fast, or are unable to type the commands, feel free to execute the code in these scripts to follow along.</p>
 </div>
 <div id="installing-packages" class="section level3">
